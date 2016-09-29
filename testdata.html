@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			function daysInMonth(y) {
+				str = "2016-"+y+"-1";
+				//console.log(str);
+				var x = new Date(str);
+				//console.log(x);
+				var d = new Date (x.getFullYear(), x.getMonth()+1, 0);
+				return d.getDate();
+			};
+			var an = [];
+			for (var i = 1; i < 13; i++) {
+				an[i] = [];
+				str = "2016-"+i+"-1";
+				console.log(str);
+				var x = new Date(str);
+				//x = getTime(str);
+				console.log(x);
+				days = daysInMonth(x)
+				console.log(days);
+				
+			};
+
+
+
+
+
+
+
+
+		</script>
+	</head>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			function deseneaza(colturi, ferestre, paturi) {
+				console.log('2-10 2-10');
+				var canvas = document.getElementById('canvas');
+				var clt    = colturi.split('nx');
+				var pat    = paturi.split('nx');
+				var fer    = ferestre.split('nx');
+				if (canvas.getContext) {
+					var cnt = canvas.getContext('2d');
+					
+					cnt.beginPath();
+					cnt.moveTo(clt[0].split('-')[0], clt[0].split('-')[1] );
+					cnt.strokeStyle = '#000000';
+					for (var i = 1; i < clt.length; i++) {
+						cnt.lineTo(clt[i].split('-')[0], clt[i].split('-')[1] );
+					};
+					//cnt.closePath();
+					cnt.stroke();
+
+					cnt.beginPath();
+					cnt.strokeStyle = "#0000ff";
+					for (var i = 0; i < fer.length; i++) {
+						cnt.moveTo(fer[i].split('/')[0].split('-')[0], fer[i].split('/')[0].split('-')[1]);
+						cnt.lineTo(fer[i].split('/')[1].split('-')[0], fer[i].split('/')[1].split('-')[1]);
+					};
+					cnt.closePath();
+					cnt.stroke();
+
+					cnt.strokeStyle = '#000000';
+					for (var i = 0; i < pat.length; i++) {
+						ox = [1, -0.5, -1, 0.5];
+						oy = [-1, -2 , 1 ,2];
+						cnt.strokeRect(pat[i].split('-')[0], pat[i].split('-')[1], ox[pat[i].split('-')[2]]*30, oy[pat[i].split('-')[2]]*15)
+					};
+				};
+			}
+		</script>
+		<style type="text/css">
+      		canvas { border: 0px solid black; }
+    	</style>
+	</head>
+
+	<body onload = "deseneaza('0-0nx100-0nx100-100nx50-130nx0-100', '50-50/70-70nx20-20/30-30', '60-30-3nx30-60-2');">
+
+<!-- (v)0/0-(r)100/0-(r)100/100-50/130-0/100-0/0; 50/50-70/70; 20/20-30/30;   -->
+
+		<canvas id = 'canvas' width = '800' height = '600' border = '1'>eroare canvas</canvas>
+	</body>
+// pat de culoare diferita pentru a semnala starea camerei
+</html>

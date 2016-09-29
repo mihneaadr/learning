@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			function process (str) {
+				var leg[];
+				var j = 0;
+				str.split(';');
+				for (var i = 0; i < str.length; i++) {
+					if (str[i].indexOf('-') + 1) {
+						leg[j] = i;
+						j++;
+						str[i].split('-');
+					};
+				};
+				var str2 = str.join();
+				for (var i = 0; i < str2.length; i++) {
+					var str3 = str2[i].split('.');
+					an[str3[1]][str3[0]] = 1;
+					for (var mk = 0; mk < leg.length; mk++) {
+						if (leg[mk] == i) {};
+					};
+				};
+			}
+
+
+
+
+
+
+			function daysInMonth(y) {
+				str = "2016-"+y+"-1";
+				//console.log(str);
+				var x = new Date(str);
+				//console.log(x);
+				var d = new Date (x.getFullYear(), x.getMonth()+1, 0);
+				return d.getDate();
+			};
+			
+
+
+			var an = [];
+			for (var i = 1; i < 13; i++) {
+				an[i] = [];
+				days = daysInMonth(i)
+				for (var j = 1; j <= days ; j++) {
+					an[i][j]=0;
+				};
+			};
+			
+
+
+			function changecol(index){
+				var x = document.getElementById(index);
+				if (x.style.color == 'black' || x.style.color == '') {
+					x.style.color = 'red';
+					an[ll][index] = 1;
+					console.log(an[ll][index], ll , index);
+				} else {
+					x.style.color = 'black';
+					an[ll][index] = 0;
+					console.log(an[ll][index], ll ,index);
+				}
+			}
+			
+
+
+			function showmonth(m){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById('tabel').innerHTML = xmlhttp.responseText;
+					};
+				}
+				xmlhttp.open('GET', "tabelluna.php?m=" + m, true);
+				xmlhttp.send();
+				setTimeout (function(){
+						for (var i = 1; i <= daysInMonth(ll); i++) {
+							if (an[ll][i] == 1) {
+								changecol(i);
+								console.log(an[ll][i], ll , i);
+							};
+						};
+					}, 10);
+			}
+			
+
+
+			/*function changemonth(at){
+				if (at == 1) {
+					ll += 1;
+					showmonth(ll);
+					setTimeout (function(){
+						for (var i = 1; i <= daysInMonth(ll); i++) {
+							if (an[ll][i] == 1) {
+								changecol(i);
+								console.log(an[ll][i], ll , i);
+							};
+						};
+					}, 100);
+					
+
+				} else {
+					ll -= 1;
+					showmonth(ll);
+					setTimeout (function(){
+						for (var i = 1; i <= daysInMonth(ll); i++) {
+							if (an[ll][i] == 1) {
+								changecol(i);
+								console.log(an[ll][i], ll , i);
+							};
+						};
+					}, 100);
+				}
+			}*/
+			ll = 3;
+		</script>
+	</head>
+	<body>
+		<table id = 'tabel' border = '1' align = 'center'>
+		</table>
+		<p id = 'test'> </p>
+		<form>
+			<input id = 'final' type = 'hidden'>
+		</form>
+	<button onclick = 'showmonth(ll)'>Mama</button>
+	<button onclick = 'showmonth(--ll)'>-</button>
+	<button onclick = 'showmonth(++ll)'>+</button>
+	</body>
+</html>

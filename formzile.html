@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+	function prelucrare ($str) {
+		var leg = [];
+		var subs = $str.split(";");
+		var subs2 = [];
+		var j = 0;
+		for (var i = 0; i < subs.length; i++) {
+			subs2[i] = subs[i].split("-");
+			if (subs2[i] == subs[i]) {
+				leg[j] = i;
+				j++;
+			}
+		}
+		 var supstr = "zile="+subs2+"&leg="+leg;
+		return supstr;
+	}
+	function afisare (){
+		var ciuciu = document.getElementById('str1').value;
+		var mama = prelucrare(ciuciu);
+		
+	} 
+	</script>
+</head>
+<body>
+	<form>
+		<input type = 'text' id = 'str1'>
+	</form>
+	<button onclick = "alert(prelucrare(document.getElementById('str1').value))">Click</button>
+</body>
+</html>
