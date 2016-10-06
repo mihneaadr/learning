@@ -15,7 +15,7 @@
 	<script type="text/javascript" src = "modifications.js"></script>
 </head>
 <body>
-	<table>
+	<table border="1px">
 		<tr>
 			<th>Data/Timp</th>
 			<th>Tema</th>
@@ -46,7 +46,7 @@
 					<th>Comentarii</th>
 					<th>Link Convorbire</th>
 				</tr>";
-			while ($row2 = $result2 -> fetch_assoc) {
+			while ($row2 = $result2 -> fetch_assoc()) {
 				echo "
 				<tr>
 					<td>".$row2['Timp']."</td>
