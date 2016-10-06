@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 	$dbserver = "localhost";
-	incude '/home/mihnea/.php_secure/db_auth.php';
+	require '/home/mihnea/.php_secure/db_auth.php';
 	$dbname = "agenda";
 	$conn = new mysqli($dbserver, $dbuser, $dbpass, $dbname);
 	if ($conn -> connect_error) {
