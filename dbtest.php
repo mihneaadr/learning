@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <?php
 	$dbserver = "localhost";
-	$dbuser = ""; //DO NOT FORGET TO CHANGE THROUGH SSH
-	$dbpass = ""; //DO NOT FORGET TO CHANGE THROUGH SSH
-	$dbname = "agenda"
+	incude '/home/mihnea/.php_secure/db_auth.php';
+	$dbname = "agenda";
 	$conn = new mysqli($dbserver, $dbuser, $dbpass, $dbname);
 	if ($conn -> connect_error) {
 		die("Connection failed: " . $conn -> connect_error);
